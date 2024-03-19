@@ -33,7 +33,7 @@ const Navbar = () => {
                             <ul className="p-2">
                                 {subMenus}
                             </ul>
-                            <Link className="btn ml-20">
+                            <Link className="btn">
                                 <button className="bg-white p-2 border rounded-md text-orange-600  font-semibold">Buy Ticket</button>
                             </Link>
                         </li>

@@ -6,6 +6,7 @@ import Project from "../pages/Project";
 import Expo from "../pages/Expo";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import NotFound from "../pages/NotFound";
 
 
 const routes = createBrowserRouter([
@@ -36,7 +37,11 @@ const routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
-            },            
+            },   
+            {
+                path: '*',
+                element: <NotFound></NotFound>
+            }
         ]
     }
 ])

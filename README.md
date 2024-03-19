@@ -7,6 +7,8 @@ MomentJS
 react marquee - for auto slider
     - npm install react-fast-marquee --save
 React-icon
+aos
+    - npm i aos
 
 ```
 - Dynamic routing add

@@ -1,10 +1,10 @@
+import Details from "../Components/Details";
 import Navbar from "../Shared/Navbar";
 
 const Visit = () => {
     return (
-        <div>
-            <Navbar></Navbar>
-            <h1>This is visit</h1>
+        <div className="mt-5">
+            <Details></Details>
         </div>
     );
 };

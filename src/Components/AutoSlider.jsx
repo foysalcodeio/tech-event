@@ -1,17 +1,18 @@
 import Marquee from "react-fast-marquee";
-import { Link } from "react-router-dom";
 
 
 const AutoSlider = () => {
     return (
-        <div className="flex">
-        <button className="btn">Out SponsorShip </button>
-        <Marquee className="ml-5" pauseOnHover={true} speed={100}>
-            <Link to="/">I can be a React component. </Link>
-            <Link to="/"> multiple React components, or just some text. </Link>
-            <Link to="/"> multiple React components,  </Link>
-        </Marquee>
-    </div>
+        <div className="max-w-7xl mx-auto">
+            <div className="flex">
+                <button className="btn items-center"> News </button>
+                <Marquee className="ml-5 gap-2 bg-black text-slate-400 h-auto font-semibold" pauseOnHover={true} speed={100}>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur architecto obcaecati cumque praesentium minus voluptates nobis ipsam iusto aliquid iure recusandae minima ab ex nulla voluptate, nesciunt doloremque animi aut.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias nobis laudantium modi quisquam at dolores vero quos eveniet. Impedit necessitatibus eius, quasi numquam id aut nihil reprehenderit corporis non cupiditate.</p>
+                </Marquee>
+            </div>
+        </div>
+
     );
 };
 
