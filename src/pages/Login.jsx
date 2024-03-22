@@ -5,6 +5,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
     const {signIn} = useContext(AuthContext)
+    
     const handleLogin = (e) => {
         e.preventDefault();
         console.log(e.currentTarget)
@@ -20,7 +21,7 @@ const Login = () => {
         .catch((error)=>{
             console.log(error.message)
         })
-        
+
     }
     return (
         <div className="max-w-7xl mx-auto">
