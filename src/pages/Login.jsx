@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { authContext } from "../Provider/AuthProvider";
+import { AuthContext } from "../Provider/AuthProvider";
+
 
 const Login = () => {
-    const {signIn} = useContext(authContext)
-
+    const {signIn} = useContext(AuthContext)
     const handleLogin = (e) => {
         e.preventDefault();
         console.log(e.currentTarget)
@@ -14,12 +14,13 @@ const Login = () => {
         console.log(email, password)
 
         signIn(email, password)
-        .then((result) => {
+        .then((result)=>{
             console.log(result.user)
         })
         .catch((error)=>{
             console.log(error.message)
         })
+        
     }
     return (
         <div className="max-w-7xl mx-auto">
