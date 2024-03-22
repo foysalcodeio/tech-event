@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "Tech Expo 2024",
+        "image": "https://www.iottechnews.com/wp-content/uploads/sites/5/2023/11/20231130_100105-scaled.jpg",
+        "ticket_price": "$50",
+        "short_description": "Join us for the latest in technology innovations at Tech Expo 2024. Explore cutting-edge gadgets, attend insightful seminars, and network with industry leaders.",
+        "date": "2024-07-15",
+        "location": "New York, USA"
+    },
+    {
+        "id": 2,
+        "name": "Gaming Convention",
+        "image": "https://www.tradegroup.com/wp-content/uploads/2023/04/Gaming-conventions-Europe-.jpg",
+        "ticket_price": "$40",
+        "short_description": "Get ready for the ultimate gaming experience! Join us for Gaming Convention 2024 where you can play the latest games, compete in tournaments, and meet fellow gamers.",
+        "date": "2024-08-20",
+        "location": "Los Angeles, USA"
+    },
+    {
+        "id": 3,
+        "name": "TechTalks Summit",
+        "image": "https://assets-global.website-files.com/626a518e6507e34a484ee1fd/626a518e6507e3752e4eecb4_5be425add9c8ba846e6522bd_Untitled%2520design%2520(6).png",
+        "ticket_price": "Free",
+        "short_description": "Discover the future of technology at TechTalks Summit. Hear from industry experts, participate in hands-on workshops, and connect with like-minded tech enthusiasts.",
+        "date": "2024-09-10",
+        "location": "San Francisco, USA"
+    },
+    {
+        "id": 4,
+        "name": "Game Developer Conference",
+        "image": "https://www.hollywoodreporter.com/wp-content/uploads/2020/02/game_developers_conference_-_publicity_-_h_2020_.jpg",
+        "ticket_price": "$60",
+        "short_description": "Join us for the premier event for game developers! Game Developer Conference offers invaluable networking opportunities, expert-led sessions, and hands-on learning experiences.",
+        "date": "2024-10-05",
+        "location": "Seattle, USA"
+    },
+    {
+        "id": 5,
+        "name": "AI & Robotics Expo",
+        "image": "https://img2.chinadaily.com.cn/images/202011/02/5f9f64fea31024adbd9d8d26.jpeg",
+        "ticket_price": "$55",
+        "short_description": "Explore the future of artificial intelligence and robotics at AI & Robotics Expo. Engage with cutting-edge technologies, attend keynote presentations, and connect with industry pioneers.",
+        "date": "2024-11-15",
+        "location": "London, UK"
+    },
+    {
+        "id": 6,
+        "name": "Virtual Reality Summit",
+        "image": "https://techxmedia.com/wp-content/uploads/2022/09/AR-VR-Featured-5.png",
+        "ticket_price": "$45",
+        "short_description": "Experience the latest in virtual reality technology at Virtual Reality Summit. Immerse yourself in interactive demos, attend VR storytelling sessions, and connect with VR enthusiasts.",
+        "date": "2024-12-01",
+        "location": "Tokyo, Japan"
+    }
+]

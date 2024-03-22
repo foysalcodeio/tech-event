@@ -11,7 +11,7 @@ const Header = () => {
     }, [])
     
     return (
-        <div className="w-full bg-gray-900 z-100">
+        <div className="w-full bg-gray-900 h-auto">
             <div className="max-w-7xl mx-auto flex flex-row">
                 <div>
                     <h2 data-aos="fade-right" className="text-8xl text-white font-poppins font-black space-x-1 mt-10">Offshore <br /> Tech Staffing <br /> Done Right <b className="text-4xl">(finally)</b> </h2>
@@ -22,7 +22,7 @@ const Header = () => {
                     <img data-aos="zoom-out-up" className='mx-auto mix-blend-lighten' src={image} alt="" />
                 </div>
             </div>
-            <div className='w-full bg-black h-screen '>
+            <div className='w-full bg-black'>
                 <div className='max-w-7xl mx-auto flex'>
                     <p className='p-2 bg-blue-500 w-24 text-2xl text-center rounded-md text-white'>About Us</p>
                     <h2 className='text-5xl mt-5 text-center space-x-5 leading-normal text-white ml-10'>Using Trending Technologies <u className='text-violet-500'> We Develop The <br />
@@ -33,12 +33,8 @@ const Header = () => {
                     <p className='text-3xl text-orange-400 mt-10 font-semibold mb-5'>Number of Participant</p>
                     <GroupImg />
                 </div>
-                <div className='bg-white h-screen w-full'>
-                    <div className='mx-auto max-w-7xl'>
-                    
-                    </div>
-                </div>
             </div>
+            
         </div>
     );
 };

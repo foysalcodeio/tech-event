@@ -17,10 +17,12 @@ const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
+                loader: ()=> fetch('/Data/Service.json')
             },
             {
-                path: '/visit',
-                element: <Visit></Visit>
+                path: '/visit/:id',
+                element: <Visit></Visit>,
+                loader: ()=>fetch('/Data/Service.json')
             },
             {
                 path: '/project',

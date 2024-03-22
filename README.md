@@ -19,6 +19,7 @@ aos
 
 
 #helping link
-https://freefrontend.com/tailwind-footers/
+component : https://freefrontend.com/tailwind-footers/
+animated : https://gifer.com/en/
 
 # tech-event
