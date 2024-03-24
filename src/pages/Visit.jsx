@@ -1,23 +1,24 @@
 import { useLoaderData, useParams } from "react-router-dom";
-import Details from "../Components/Details";
-import { saveJobApp } from "../Storage/LocalStorage";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import Details from "../Components/Details";
+import { saveExpoApp } from "../Storage/LocalStorage";
+
+
 const Visit = () => {
+
     const { id } = useParams();
     const interestInfo = useLoaderData();
     const idInt = parseInt(id);
-    const infoData = interestInfo.find(infoData => infoData.id === idInt);
-    // console.log(infoData);
-    const {name, image, ticket_price} = infoData;
+    const infoData = interestInfo.find(info => info.id === idInt);
+    const { name, image, ticket_price } = infoData;
 
-    const handleApplyExpo= () => {
-        // add LocalDatabase
-        saveJobApp(idInt);
-        toast('you have applied successfully');
+    const handleApplyExpo = () => {
+        saveExpoApp(idInt);
+        toast('You have applied successfully');
     }
-    
+
     return (
         <div className="">
             <Details />

@@ -1,10 +1,33 @@
 import Aos from "aos";
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import { useLoaderData } from "react-router-dom";
+import { getStoredExpoApp } from "../Storage/LocalStorage";
+import { useState } from "react";
 const Expo = () => {
-    useEffect(() => {
-        Aos.init({ duration: 2000 });
-    })
+
+    const [appliedExpo, setAppliedExpo] = useState([])
+
+    const expos = useLoaderData();
+    console.log(expos)
+
+    useEffect(()=> {
+        const storedExpoId = getStoredExpoApp();
+        if(expos.length > 0){
+            const ExpoApplied = [];
+            for(const id of storedExpoId){
+                const Event = expos.find(expo => expo.id === id)
+                if(Event){
+                    ExpoApplied.push(Event)
+                }
+            }
+            setAppliedExpo(ExpoApplied)
+        }
+    }, [expos])
+    
+    
+    
+
     return (
         <div>
             <div className="w-full bg-gradient-to-r from-purple-500 to-pink-500">
@@ -23,10 +46,11 @@ const Expo = () => {
                 </div>
             </div>
             <div className="bg-white">
-
+            <h2 className="text-2xl">You Applied Expo's : {appliedExpo.length} </h2>
             </div>
         </div>
     );
 };
 
 export default Expo;
+
