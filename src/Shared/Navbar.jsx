@@ -14,9 +14,9 @@ const Navbar = () => {
 
     const NavLinks = <>
         <li><NavLink className="no-underline" to="/">Home</NavLink></li>
-        <li><NavLink className="no-underline" to="/visit">Visit</NavLink></li>
         <li><NavLink className="no-underline" to="/project">Project</NavLink></li>
         <li><NavLink className="no-underline" to="/expo">Expo</NavLink></li>
+        
     </>
 
     const NavLinks2 = <>

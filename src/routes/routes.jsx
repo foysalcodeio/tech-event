@@ -7,12 +7,15 @@ import Expo from "../pages/Expo";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import NotFound from "../pages/NotFound";
+import PrivateRoute from "./PrivateRoute";
+
 
 
 const routes = createBrowserRouter([
     {
         path: '/',
         element: <Root></Root>,
+        errorElement: <NotFound></NotFound>,
         children: [
             {
                 path: '/',
@@ -20,13 +23,9 @@ const routes = createBrowserRouter([
                 loader: ()=> fetch('/Data/Service.json')
             },
             {
-                path: '/visit/:id',
-                element: <Visit></Visit>,
-                loader: ()=>fetch('/Data/Service.json')
-            },
-            {
-                path: '/project',
-                element: <Project></Project>
+                path: '/service/:id',
+                element: <PrivateRoute> <Visit></Visit></PrivateRoute>,
+                loader: ()=> fetch('/Data/Service.json')
             },
             {
                 path: '/expo',

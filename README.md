@@ -9,6 +9,9 @@ react marquee - for auto slider
 React-icon
 aos
     - npm i aos
+Toast
+    - npm i react-toastify
+    - npm install --save react-toastify
 
 ```
 - Dynamic routing add

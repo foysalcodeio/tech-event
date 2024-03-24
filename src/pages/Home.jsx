@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 const Home = () => {
     const serviceInfo = useLoaderData();
-    console.log(serviceInfo)
+    //console.log(serviceInfo)
 
     useEffect(() => {
         Aos.init({ duration: 2000 })

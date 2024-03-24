@@ -1,22 +1,34 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
     const {signIn} = useContext(AuthContext)
+
+    //path & location store data that which gonna go to 
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log('sign in location & we get fully state : ', location)
+    
     
     const handleLogin = (e) => {
         e.preventDefault();
         console.log(e.currentTarget)
         const form = new FormData(e.currentTarget);
         const email = form.get('email');
-        const password = form.get('password')
-        console.log(email, password)
+        const password = form.get('password');
+        console.log(email, password);
+
+        toast('Login successfully');
 
         signIn(email, password)
         .then((result)=>{
             console.log(result.user)
+            //navigate after login
+            navigate(location?.state?location.state : '/' );
         })
         .catch((error)=>{
             console.log(error.message)
@@ -57,6 +69,7 @@ const Login = () => {
                     <Link className="no-underline" to="/register"><b className="ml-2"> Register Now</b></Link>
                 </p>
             </div>
+            <ToastContainer />
         </div>
     );
 };
