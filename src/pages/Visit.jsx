@@ -28,6 +28,7 @@ const Visit = () => {
                     <div className="pb-7 flex items-center border-b border-gray-300">
                         <img src={image}  alt="" className="rounded-3xl w-20 h-20" />
                         <div className="ml-5">
+                            <h2 className="text-5xl">News Details : {id}</h2>
                             <span className="block text-2xl font-semibold">{name}</span>
                             <span><span className="font-medium text-gray-500 text-xl align-top"></span><span className="text-3xl font-bold">{ticket_price}</span></span><span className="text-gray-500 font-medium">/ user</span>
                         </div>

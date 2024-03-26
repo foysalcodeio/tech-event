@@ -9,6 +9,7 @@ import Register from "../pages/Register";
 import NotFound from "../pages/NotFound";
 
 
+
 const routes = createBrowserRouter([
     {
         path: '/',
@@ -22,7 +23,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/service/:id',
-                element: <Visit></Visit>,
+                element:<Visit></Visit>,
                 loader: ()=> fetch('/Data/Service.json')
             },
             {

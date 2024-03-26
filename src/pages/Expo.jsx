@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useLoaderData } from "react-router-dom";
 import { getStoredExpoApp } from "../Storage/LocalStorage";
 import { useState } from "react";
+import ExpoList from "../Components/ExpoList";
 const Expo = () => {
 
     const [appliedExpo, setAppliedExpo] = useState([])
@@ -25,9 +26,6 @@ const Expo = () => {
         }
     }, [expos])
     
-    
-    
-
     return (
         <div>
             <div className="w-full bg-gradient-to-r from-purple-500 to-pink-500">
@@ -45,8 +43,13 @@ const Expo = () => {
                     </div>
                 </div>
             </div>
-            <div className="bg-white">
-            <h2 className="text-2xl">You Applied Expo's : {appliedExpo.length} </h2>
+            <div className="bg-white max-w-7xl mx-auto">
+            <h2 className="text-2xl md:text-3xl pl-2 my-2 border-l-4  font-sans font-bold border-teal-400  dark:text-gray-900">You Applied Expo's : {appliedExpo.length} </h2>
+            <div>
+                {
+                    appliedExpo.map(listExpo => <ExpoList key={listExpo.id} joinExpo={listExpo} ></ExpoList>)
+                }
+            </div>
             </div>
         </div>
     );

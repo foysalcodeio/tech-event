@@ -1,84 +1,121 @@
-import { useContext } from "react";
+
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const Register = () => {
+    const[succuss, setSuccess] = useState('');
+    const [registerError, setRegisterError] = useState('');
 
-    const {createUser} = useContext(AuthContext)
+    const {createUser, changeProfile} = useContext(AuthContext)
 
-    const handleRegister = (e) => {
-       e.preventDefault();
-       console.log(e.currentTarget)
-       const form = new FormData(e.currentTarget)
-       const name = form.get('name')
-       const photo = form.get('photo')
-       const email = form.get('email')
-       const password = form.get('password')
-       console.log(name, photo, email, password)
+    const handleRegister = e => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        const accepted = e.target.terms.checked;
+        console.log(name, email, password, accepted);
 
 
-       createUser(email, password)
-       .then((result)=>{
-            console.log(result.user)
-       })
-       .catch((error)=>{
-            console.log(error.message)
-       })
+        //reset
+        setRegisterError('');
+        setSuccess('');
+
+        //validation & Error handling
+        if(password.length < 6){
+            setRegisterError('password should be at least 6 character')
+            return;
+        }
+        else if(!/[A-Z]/.test(password)){
+            setRegisterError('your password minimum 1 character')
+            return;
+        }
+        else if(!accepted){
+            setRegisterError('please accept term and condition')
+            return;
+        }
+
+
+
+        createUser(email, password)
+    .then((result) => {
+        console.log(result.user);
+        setSuccess('user created successfully');
+
+        if (result.user) {
+            changeProfile(result.user, {
+                displayName: name,
+                photoURL: "https://www.facebook.com/photo/?fbid=7052547858185600&set=a.109511789155943"
+            })
+            .then(() => {
+                console.log('profile update');
+                toast.info('profile updated')
+            })
+            .catch((error) => {
+                console.error(error.message);
+            });
+        } else {
+            console.error("User object is undefined");
+        }
+    })
+    .catch((error) => {
+        console.error(error);
+        setRegisterError(error.message);
+    });
 
     }
+
+
     return (
-        <div>
-            <div className="flex flex-col items-center bg-gray-200 p-20 mt-10">
-                <h2 className="text-3xl text-center">Register Your Account</h2>
-                <form className="md:w-3/4 lg:w-1/2 mx-auto" onSubmit={handleRegister}>
+        <div className="border">
+            <div className="mx-auto md:w-1/2">
+            <h2 className="text-3xl text-black mt-5 mb-5">Please Register</h2>
 
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-xl">UserName</span>
-                        </label>
-                        {/* name */}
-                        <input type="text" name="name" placeholder="Your Name" className="input input-bordered bg-white" autoComplete="username" required />
-                    </div>
+            <form onSubmit={handleRegister} >
 
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-xl">PhotoURL</span>
-                        </label>
-                        {/* photo */}
-                        <input type="text" name="photo" placeholder="photo url" className="input input-bordered bg-white" autoComplete="photo url" required />
-                    </div>
+                <input className="mb-4 text-white p-4 w-3/4" type="text" name="name" placeholder="your name" id="" required />
+                <br />
+                <input className="mb-4 text-white p-4 w-3/4" type="email" name="email" placeholder="foysal@yahoo.com" id="" required />
+                <br />
 
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-xl">Email Address</span>
-                        </label>
-                        {/* email */}
-                        <input type="email" name="email" placeholder="email" className="input input-bordered bg-white" autoComplete="email" required />
-                    </div>
+                <div className="flex flex-row items-center">
+                <input 
+                className="text-white p-4 w-3/4"
+                // type={showPassword ? "text" : "password"}
+                name="password" 
+                placeholder="foysal#123" id="" />                
+                    {/* <span className="ml-5"
+                        onClick={ () => setShowPassword(!showPassword)}> 
+                            {showPassword ? <FaEye className="text-3xl" /> : <FaEyeSlash className="text-3xl" />}
+                    </span> */}
+                </div>
+                <br />
+                
+                <input type="checkbox" name="terms" id="terms" />
+                <label className="ml-2" htmlFor="terms">Accept term & Condition</label>
 
-                    <div className="form-control">
-                        <label className="label">
-                            <span className="label-text text-xl">Password</span>
-                        </label>
-                        {/* password */}
-                        <input type="password" name="password" placeholder="password" className="input input-bordered bg-white" autoComplete="current-password" required />
-
-                        <label className="label">
-                            <a href="#" className="label-text-alt link link-hover text-red-500 text-xl">Forgot password?</a>
-                        </label>
-                    </div>
-
-                    <div className="form-control mt-6">
-                        <button className="btn bg-black text-white hover:text-black">Register</button>
-                    </div>
-                </form>
-
-                <p className="flex justify-center text-gray-500 text-xl text-semibold">Already Have An Account ?
-                    <Link className="no-underline" to="/login"><b className="ml-2"> Login Now</b></Link>
-                </p>
+                <div className="flex">
+                    <input className="btn text-white mt-5 mb-4 p-4" type="submit" value="Register" />
+                </div>
+                <p>Registration done ? Please <Link to="/login">Login</Link></p>
+            </form>
+            {
+                registerError && <p className="text-red-700">{registerError}</p>                
+            }
+            {
+                succuss && <p className="text-green-700">{succuss}</p>
+            }            
             </div>
+            <ToastContainer />
         </div>
     );
 };
 
 export default Register;
+
