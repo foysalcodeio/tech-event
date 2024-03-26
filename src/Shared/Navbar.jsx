@@ -8,15 +8,22 @@ const Navbar = () => {
 
     const handleLogOut = () => {
         LogOut()
-        .then()
-        .catch()
+        .then(()=>{
+            console.log('user log out successfully')
+        })
+        .catch((error)=>{
+            console.error(error)
+        })
     }
 
     const NavLinks = <>
         <li><NavLink className="no-underline" to="/">Home</NavLink></li>
         <li><NavLink className="no-underline" to="/project">Project</NavLink></li>
-        <li><NavLink className="no-underline" to="/expo">Expo</NavLink></li>
-        
+        {
+            user && <>
+                <li><NavLink className="no-underline" to="/expo">Expo</NavLink></li>
+            </>
+        }
     </>
 
     const NavLinks2 = <>

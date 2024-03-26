@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext();
@@ -38,6 +38,12 @@ const AuthProvider = ({ children }) => {
         setLoading(true);
         return updateProfile(user, profileData);
     }
+
+    //6. verify with mail
+    const verifyEmail = (user) => {
+        setLoading(true);
+        return sendEmailVerification(user);
+    }
     
 
     // data store and action
@@ -58,6 +64,7 @@ const AuthProvider = ({ children }) => {
         LogOut,
         resetPassword,
         changeProfile,
+        verifyEmail,
         user,
         loading
     }
