@@ -53,31 +53,31 @@ const Register = () => {
                         displayName: name,
                         photoURL: "https://www.facebook.com/photo/?fbid=7052547858185600&set=a.109511789155943"
                     })
-                        .then(() => {
-                            console.log('profile update');
-                            toast.info('profile updated')
+                    .then(() => {
+                        console.log('profile update');
+                        toast.info('profile updated')
 
 
-                            // send verification
-                            verifyEmail(result.user)
-                                .then(() => {
-                                    toast.info('🦄 Please verify your account!', {
-                                        position: "top-center",
-                                        autoClose: 5000,
-                                        hideProgressBar: false,
-                                        closeOnClick: true,
-                                        pauseOnHover: true,
-                                        draggable: true,
-                                        progress: undefined,
-                                        theme: "light",
-                                        transition: Slide,
-                                    });
-                                })
+                        // send verification
+                        verifyEmail(result.user)
+                            .then(() => {
+                                toast.info('🦄 Please verify your account!', {
+                                    position: "top-center",
+                                    autoClose: 5000,
+                                    hideProgressBar: false,
+                                    closeOnClick: true,
+                                    pauseOnHover: true,
+                                    draggable: true,
+                                    progress: undefined,
+                                    theme: "light",
+                                    transition: Slide,
+                                });
+                            })
 
-                        })
-                        .catch((error) => {
-                            console.error(error.message);
-                        });
+                    })
+                    .catch((error) => {
+                        console.error(error.message);
+                    });
 
                 } else {
                     console.error("User object is undefined");
