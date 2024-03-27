@@ -36,7 +36,15 @@ const Navbar = () => {
     const NavLinks2 = <>
     {
         user ? 
+        <>
         <button onClick={handleLogOut} className="btn"> <Link to="/">Log Out</Link></button>
+        <li><NavLink className="no-underline" to="/">{user.displayName}</NavLink></li>
+        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+            <div className="w-10 rounded-full">
+                <img alt="Tailwind CSS Navbar component" src={userLogo} />
+            </div>
+        </div>
+        </>
         :
         <li>
             <Link className="no-underline" to="/login">
@@ -75,9 +83,6 @@ const Navbar = () => {
                 </div>
                 <a className="btn btn-ghost text-xl"><Link to="/">TernTECH</Link> </a>
             </div>
-
-
-
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {NavLinks}
@@ -89,25 +94,16 @@ const Navbar = () => {
                             </ul>
                         </details>
                     </li>
-
                     <Link className="btn ml-20">
                         <button className="bg-white p-2 border rounded-md text-orange-600  font-semibold">Buy Ticket</button>
                     </Link>
                 </ul>
             </div>
             <div className="navbar-end">
-                
                 {NavLinks2}
-
-                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        <img alt="Tailwind CSS Navbar component" src={userLogo} />
-                    </div>
-                </div>
-
             </div>
         </div>
-        </div>
+    </div>
     );
 };
 

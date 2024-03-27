@@ -8,7 +8,6 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
-    const [loginUser, setLoginUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
     //1. register
@@ -74,7 +73,6 @@ const AuthProvider = ({ children }) => {
         verifyEmail,
         googleSignIn,
         user,
-        loginUser,
         loading
     }
     return (

@@ -103,9 +103,12 @@ const Login = () => {
             const loggedInUser = result.user;
             console.log(loggedInUser)
             setUser(loggedInUser)
+            setSuccess('User login Successfully')
+            navigate(location?.state ?location.state : '/expo')
         })
         .catch(error => {
             console.log('error', error.message);
+            setLoginError(error.message)
         })
     }
 
