@@ -10,11 +10,8 @@ import { useState } from "react";
 const Login = () => {
     const { signIn, resetPassword, googleSignIn } = useContext(AuthContext)
     
-
     const [loginError, setLoginError] = useState(' ')
-    const [success, setSuccess] = useState(' ')
-
-    
+    const [success, setSuccess] = useState(' ')    
 
     //path & location store data that which gonna go to 
     const location = useLocation();
@@ -40,7 +37,8 @@ const Login = () => {
         // const password = e.target.password.value;
         // console.log(email, password);
 
-        setLoginError(' ')
+        setLoginError('')
+        setSuccess('')
 
         signIn(email, password)
             .then((result) => {
@@ -102,9 +100,8 @@ const Login = () => {
         .then((result) => {
             const loggedInUser = result.user;
             console.log(loggedInUser)
-            setUser(loggedInUser)
             setSuccess('User login Successfully')
-            navigate(location?.state ?location.state : '/expo')
+            navigate(location?.state ? location.state : '/expo');
         })
         .catch(error => {
             console.log('error', error.message);

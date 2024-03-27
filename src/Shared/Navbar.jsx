@@ -2,6 +2,7 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import userLogo from "./../assets/user.png"
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import { deleteAllExpoApps } from "../Storage/LocalStorage";
  // Add this line to get setUser from AuthContext
 
 const Navbar = () => {
@@ -16,12 +17,14 @@ const Navbar = () => {
         .then(()=>{
             console.log('user log out successfully')
             setUser(null)
+            deleteAllExpoApps();
             navigate(location?.state ? location.state : '/home');
         })
         .catch((error)=>{
             console.error(error)
         })
     }
+
 
     const NavLinks = <>
         <li><NavLink className="no-underline" to="/">Home</NavLink></li>
@@ -37,7 +40,7 @@ const Navbar = () => {
     {
         user ? 
         <>
-        <button onClick={handleLogOut} className="btn"> <Link to="/">Log Out</Link></button>
+        <button onClick={handleLogOut} className="btn"> <Link>Log Out</Link></button>
         <li><NavLink className="no-underline" to="/">{user.displayName}</NavLink></li>
         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">

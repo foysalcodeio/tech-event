@@ -14,4 +14,20 @@ const saveExpoApp = id => {
         localStorage.setItem('data', JSON.stringify(storedExpoApp))
     }
 }
-export {getStoredExpoApp, saveExpoApp}
+
+//single id delete
+const deleteExpoApp = id => {
+    const storedExpoApp = getStoredExpoApp();
+    const index = storedExpoApp.findIndex(jobId => jobId === id);
+    if(index !== -1) {
+        storedExpoApp.splice(index, 1);
+        localStorage.setItem('data', JSON.stringify(storedExpoApp));
+    }
+};
+
+//all id delete
+const deleteAllExpoApps = () => {
+    localStorage.removeItem('data');
+};
+
+export {getStoredExpoApp, saveExpoApp, deleteExpoApp, deleteAllExpoApps}

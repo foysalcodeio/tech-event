@@ -30,7 +30,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/expo',
-                element: <Expo></Expo>,
+                element: <PrivateRoute><Expo></Expo></PrivateRoute>,
                 loader: ()=> fetch('/Data/Service.json')
             },
             {
