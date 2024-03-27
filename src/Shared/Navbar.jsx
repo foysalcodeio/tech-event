@@ -1,15 +1,22 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import userLogo from "./../assets/user.png"
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+ // Add this line to get setUser from AuthContext
 
 const Navbar = () => {
     const {user, LogOut} = useContext(AuthContext);
+    const { setUser } = useContext(AuthContext);
+
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleLogOut = () => {
         LogOut()
         .then(()=>{
             console.log('user log out successfully')
+            setUser(null)
+            navigate(location?.state ? location.state : '/home');
         })
         .catch((error)=>{
             console.error(error)
@@ -20,7 +27,7 @@ const Navbar = () => {
         <li><NavLink className="no-underline" to="/">Home</NavLink></li>
         <li><NavLink className="no-underline" to="/project">Project</NavLink></li>
         {
-            user && <>
+            user &&  <>
                 <li><NavLink className="no-underline" to="/expo">Expo</NavLink></li>
             </>
         }
@@ -66,7 +73,7 @@ const Navbar = () => {
                         {NavLinks2}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">TernTECH</a>
+                <a className="btn btn-ghost text-xl"><Link to="/">TernTECH</Link> </a>
             </div>
 
 

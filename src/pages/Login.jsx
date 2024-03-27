@@ -8,10 +8,13 @@ import { useState } from "react";
 
 
 const Login = () => {
-    const { signIn, resetPassword } = useContext(AuthContext)
+    const { signIn, resetPassword, googleSignIn } = useContext(AuthContext)
+    
 
     const [loginError, setLoginError] = useState(' ')
     const [success, setSuccess] = useState(' ')
+
+    
 
     //path & location store data that which gonna go to 
     const location = useLocation();
@@ -37,8 +40,6 @@ const Login = () => {
         // const password = e.target.password.value;
         // console.log(email, password);
 
-        
-
         setLoginError(' ')
 
         signIn(email, password)
@@ -46,14 +47,12 @@ const Login = () => {
                 console.log(result.user)
                 setSuccess('User Login Successfully')
                 //navigate after login
-                navigate(location?.state ? location.state : '/');
+                navigate(location?.state ? location.state : '/expo');
             })
             .catch((error) => {
                 console.log(error.message)
                 setLoginError(error.message)
             })
-
-        
 
         if (password > 0) {
             setLoginError('Your password at least 6 character')
@@ -97,6 +96,19 @@ const Login = () => {
                 console.log(error)
             })
     }
+    const handleGoogleSignIn = () =>{
+        // googleSignIn()
+        googleSignIn()
+        .then((result) => {
+            const loggedInUser = result.user;
+            console.log(loggedInUser)
+            setUser(loggedInUser)
+        })
+        .catch(error => {
+            console.log('error', error.message);
+        })
+    }
+
     return (
         <div className="hero min-h-screen bg-slate-50">
             <div className="hero-content flex-col  lg:flex-col">
@@ -131,23 +143,25 @@ const Login = () => {
                                 <button className="btn btn-primary">Login</button>
                             </div>
                         </form>
-
                         <p>New to this website? Please <Link to="/register">Register</Link></p>
-
                     </div>
                 </div>
                 <div className="p-2 ">
-                        {
-                            loginError && <p className="text-red-500 text-xl">{loginError}</p>
-                        }
-                        {
-                            success &&  <p className="text-green-500 text-xl">{success}</p>
-                        }
-
-                    </div>
-
+                    {
+                        loginError && <p className="text-red-500 text-xl">{loginError}</p>
+                    }
+                    {
+                        success && <p className="text-green-500 text-xl">{success}</p>
+                    }
+                </div>
+                <div>
+                    <p className="text-2xl">or</p>
+                </div>
+                <div className="px-6 sm:px-0 max-w-sm">
+                    <button onClick={handleGoogleSignIn} type="button" class="text-white w-full  bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-between mr-2 mb-2"><svg class="mr-2 -ml-1 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>Sign up with Google<div></div></button>
+                </div>
             </div>
-        <ToastContainer />
+            <ToastContainer />
         </div>
     );
 };

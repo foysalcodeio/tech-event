@@ -7,10 +7,12 @@ import Expo from "../pages/Expo";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 import NotFound from "../pages/NotFound";
+import PrivateRoute from "./PrivateRoute";
 
 
 
 const routes = createBrowserRouter([
+    
     {
         path: '/',
         element: <Root></Root>,
@@ -23,7 +25,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: '/service/:id',
-                element:<Visit></Visit>,
+                element:<PrivateRoute><Visit></Visit></PrivateRoute>,
                 loader: ()=> fetch('/Data/Service.json')
             },
             {
